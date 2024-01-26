@@ -48,4 +48,4 @@ And you need to create an HTML file with instructions for work or supporting mat
 
 И необходимо создать HTML файл с указаниями к работе или вспомогательными материалами.
 
- tests/[название_теста]/[вариант]/left1.html
+```tests/[название_теста]/[вариант]/left1.html```
