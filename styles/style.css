@@ -1,0 +1,222 @@
+* {
+    font-family: Roboto;
+    box-sizing: border-box;
+
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.reg {
+    background-image: url('https://kartinki.pics/pics/uploads/posts/2022-08/thumbs/1660477367_8-kartinkin-net-p-minimalistichnie-oboi-krasivo-8.jpg');
+    background-repeat: no-repeat;
+    background-size: 160vh;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+input:not(#rando, #answerField),
+select {
+    width: 20vw;
+    border: 1px solid black;
+    height: 20px;
+    
+}
+
+#signinform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+
+.signup {
+    position: absolute;
+    left: 50vw;
+    background-color: whitesmoke;
+    width: 50vw;
+    height: 100%;
+    text-align: center;
+    padding: 0 30px;
+
+}
+
+
+.signup h1,
+h2,
+h3,
+h4,
+h5 {
+    color: black;
+}
+
+#continueSignUp {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+ul {
+    display: flex;
+    gap: 10px;
+}
+
+li {
+    list-style: none;
+}
+
+#close {
+    position: absolute;
+
+    left: 20px;
+}
+
+.tasks {
+    padding: 1vw;
+    text-align: center;
+}
+
+.tasks>iframe {
+    width: 30vw;
+    height: 50vh;
+    resize: horizontal;
+}
+
+#buttons {
+    margin: 20px;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+#answerField {
+    height: 20px; justify-content: center; width: 200px;
+}
+
+#infoAns {
+    color: red;
+    font-size: 10px;
+}
+
+.walle {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* CUBE */
+
+#headers>* {
+    margin: 20px;
+}
+
+.face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: inherit;
+    font-size: 60px;
+    color: #fff;
+}
+
+.form {
+    top: 95vh;
+    left: 0;
+    position: absolute;
+}
+
+#element {
+    width: 20vw;
+    height: 20vw;
+    transform-style: preserve-3d;
+}
+
+
+#coords {
+    margin-bottom: 5px;
+}
+
+.right {
+    background: rgba(210, 0, 0, .7);
+    transform: rotateY(90deg) translateZ(10vw);
+}
+
+.front {
+    background: rgba(90, 90, 90, .7);
+    transform: translateZ(10vw);
+}
+
+.back {
+    background: rgba(0, 210, 0, .7);
+    transform: rotateY(180deg) translateZ(10vw);
+}
+
+.left {
+    background: rgba(0, 0, 210, .7);
+    transform: rotateY(-90deg) translateZ(10vw);
+}
+
+.top {
+    background: rgba(210, 210, 0, .7);
+    transform: rotateX(90deg) translateZ(10vw);
+}
+
+.bottom {
+    background: rgba(210, 0, 210, .7);
+    transform: rotateX(-90deg) translateZ(10vw);
+}
+
+.square {
+    transition: 1s all;
+    margin: 0;
+}
+
+#app .square {
+    position: absolute;
+    top: 25vh;
+    left: 17vw;
+}
+
+
+#buttons button {
+    border-radius: 500px;
+    background-color: black;
+    color: white;
+    width: 30px;
+    height: 30px;
+    margin: 0.5px;
+    border: 0px;
+    transition: 1s ease all;
+}
+
+#compliteTask {background-color: black; color: white; border-radius: 15px; width: 200px;
+    height: 50px;}
+
+label {color: white;}

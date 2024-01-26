@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../styles/styleText.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <h2>Перевод в десятичную систему счисления</h2>
+        <p>Преобразовать число из любой системы счисления в десятичную можно следующим образом: каждый разряд числа необходимо умножить на Xn, где X - основание исходного числа, n - номер разряда. Затем суммировать полученные значения.</p>
+
+        <p>abc<sub>x</sub> = (a*x<sup>2</sup> + b*x<sup>1</sup> + c*x<sup>0</sup>)<sub>10</sub>
+
+<p>Примеры:</p>
+<p>567<sub>8</sub> = (5*8<sup>2</sup> + 6*8<sup>1</sup> + 7*8<sup>0</sup>)<sub>10</sub> = 375<sub>10</sub></p>
+<p>110<sub>2</sub> = (1*2<sup>2</sup> + 1*2<sup>1</sup> + 0*2<sup>0</sup>)<sub>10</sub> = 6<sub>10</sub></p>
+
+<h2>Перевод из десятичной системы счисления в другие</h2>
+<p>Делим десятичное число на основание системы, в которую хотим перевести и записываем остатки от деления. Запишем полученные остатки в обратном порядке и получим искомое число.</p>
+
+<p><b>Переведем число 375<sub>10</sub> в восьмеричную систему:</b></p>
+
+<p>375 / 8 = 46 (остаток 7)</p>
+<p>46 / 8 = 5 (остаток 6)</p>
+<p>5 / 8 = 0 (остаток 5)</p>
+<p>Записываем остатки и получаем 567<sub>8</sub></p>
+
+    </div>
+</body>
+</html>

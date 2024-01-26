@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система тестирования - Вход</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="js/dbs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.4.5"></script>
+    
+    <div class="reg">
+        <div id="app">
+            <div class="form">
+                <input type="checkbox" v-model="isRandom" name="rand" id="rando">
+                <label for="rand">  Вращение куба</label>
+            </div>
+            <div class="square" id="element" :style="{transform: `rotate3d(${x}, ${y}, ${z}, ${deg}deg)`}">
+                <div class="face front">1</div>
+                <div class="face back">2</div>
+                <div class="face right">3</div>
+                <div class="face left">4</div>
+                <div class="face top">5</div>
+                <div class="face bottom">6</div>
+            </div>
+        </div>
+        
+        
+        <div class="signup">
+            <h2>Система Тестирования - ВХОД</h2>
+            <div id="signinform">
+                <input type="text" name="login" placeholder="Логин" id="name">
+                <input type="password" name="password" placeholder="Пароль" id="pass">
+                <select name="testSelect" id="testSelect">
+                    <option disabled>Выберите тест</option>
+                </select>
+            </div>
+            <button id="continueSignUp">Продолжить</button>
+            <h5 id="info" style="margin: 5px; color: red"></h5>
+            <h5>Попросите логин и пароль у администратира мероприятия</h5>
+            
+            <script src="js/usersignup.js"></script>
+
+        </div>
+    </div>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        x: 0, y: 0, z: 0, deg: 0, isRandom: false
+                    }
+                },
+            methods: {getRandPos(){
+                console.log('Yep')
+                this.x = Math.floor(Math.random()*10)
+                this.y = Math.floor(Math.random()*10)
+                this.z = Math.floor(Math.random()*10)
+                this.deg = Math.floor(Math.random()*365)
+            }},
+            mounted(){this.isRandom=!this.isRandom},
+            watch: {isRandom(){if (this.isRandom){omg = setInterval(this.getRandPos, 1000); } else{clearInterval(omg)}}}})
+            app.mount('#app')
+        </script>
+        <script async>
+        
+            const selectbox = document.getElementById('testSelect')
+            console.log(Object.keys(answers))
+            for (var item of Object.keys(answers)){
+                console.log()
+                selectbox.innerHTML+=(`<option value=${item}>${item}</option>`)
+            }
+            </script>
+    
+</body>
+</html>

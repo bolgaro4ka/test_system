@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система Тестирования - Тест</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="js/dbs.js"></script>
+
+    
+    <header>
+        <img src="">
+        <ul>
+            <li id="close" onclick="window.location.href = 'index.html'">Выйти</li>
+            <li id="time">Осталось времени: N/A</li>
+            <li><button id="end">Завершить тест</button></li>
+        </ul>
+    </header>
+    <main>
+        <p style="position: absolute; top: 94%; left: 85%; width: 15%; z-index: 999; color: rgba(0, 0, 0, 0.5)">v. 1.0.0 (School-test) Local</p>
+        
+        <div id="buttons">
+
+        </div>
+        <div class="tasks">
+            <iframe src="tests/test1/test1.html" id="answer"></iframe>
+            <iframe src="tests/test1/left1.html" id="task"></iframe>
+            <iframe style="max-width:100%!important;" src="https://web2.0calc.com/widgets/minimal/?options=%7B%22options%22%3A%22hide%22%2C%22angular%22%3A%22deg%22%2C%22menu%22%3A%22show%22%7D"></iframe>
+        </div>
+        <div class="next">
+            <div>
+                <input type="text" placeholder="Ответ" id="answerField">
+                <p id="yourAnswer" style="height: 20px; display: inline;">&nbsp;Ваш&nbsp;ответ:&nbsp;-</p>
+                <p id="infoAns"></p>
+            </div>
+            <button id="compliteTask" class="1">Отправить задание</button>
+        </div>
+        </main>
+    
+    
+</body>
+    <script type="module">
+            console.log(window.watermark)
+            for(let i=1; i<=window.answers[window.test][window.variant]["count"]; i++){
+        document.getElementById('buttons').innerHTML += `<button id='${i}'>${i}</button>`
+    }
+    </script>
+    <script>
+        function hi() {
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        window.test= url.searchParams.get("test");
+        window.variant= Math.round(Math.random()*window.answers[window.test].length)
+        if (answers[window.test].length === 1){
+            window.variant = 0
+        }
+        else if(window.variant>=answers[window.test].length){
+            window.variant-=1
+        }
+        document.getElementById('answer').src = `tests/${window.test}/${window.variant}/test1.html`
+        document.getElementById('task').src = `tests/${window.test}/${window.variant}/left1.html`
+        }
+        window.onload = hi()
+    
+    </script>
+    <script>
+        var ansUser = {}
+        ansUser[`${window.test}`] = {}
+        window.ansUserDub = ansUser
+
+        const statusAns = document.getElementById('yourAnswer')
+        let start = 0
+        let exit = false
+
+
+
+        function timeCount(){
+            "struct mode"
+            start+=1
+            document.getElementById('time').innerText = `Секунд до завершения теста осталось: ${Math.round(10800- start)}`
+            if (10800- start <= 0){
+                alert(`Время кончилось, вы не успели сдать работу`);
+                window.location.href = 'index.html'
+            }
+            if(document.hidden && window.exit){document.body.innerHTML = `<h3 style="padding: 30px">Не надо было выходить со страницы. Нажмите ctrl+R или обновите страницу чтобы начать сначала</h3><iframe src="valle.html" class="walle"></iframe>`}
+
+            if(document.hidden && !window.exit){alert('Не выходите с страницы (первое и последние предупрежденее)'); window.exit=true
+            }
+            }
+            
+        function nextTask(e){
+
+            if(document.getElementById('answerField').value === ""){
+                document.getElementById("infoAns").innerText = "Поле ответа не может быть пустым"
+                return
+            }
+            else {document.getElementById("infoAns").innerText = ''}
+            console.log(document.getElementById('answerField').value, answers[window.test][window.variant][document.getElementById('compliteTask').className][0])
+            
+
+            if (document.getElementById('answerField').value == answers[window.test][window.variant][document.getElementById('compliteTask').className][0]){
+                ansUser[window.test][document.getElementById('compliteTask').className] = [document.getElementById('answerField').value, true, answers[window.test][window.variant][document.getElementById('compliteTask').className][1]]
+            
+            }
+            else {ansUser[window.test][document.getElementById('compliteTask').className] = [document.getElementById('answerField').value, false, 0]}
+            
+            document.getElementById(document.getElementById('compliteTask').className).style.backgroundColor = "orange"
+            document.getElementById(document.getElementById('compliteTask').className).style.borderColor = "orange"
+            
+            if (parseInt(document.getElementById('compliteTask').className)+1 > answers[window.test][window.variant]['count']){
+                document.getElementById('answer').src = "endTasks.html"
+            }
+            else{document.getElementById('compliteTask').className = parseInt(document.getElementById('compliteTask').className)+1
+            document.getElementById('answerField').value = ""
+            document.getElementById('answer').src = `tests/${window.test}/${window.variant}/test${parseInt(document.getElementById('compliteTask').className)}.html`}
+            }
+
+            //window.ip = fetch('https://ipinfo.io',{credentials:'omit'}).then(res=>{res.json(); console.log(res)})
+
+            document.getElementById('compliteTask').addEventListener("click", nextTask)
+
+
+
+            document.getElementById('end').addEventListener("click", () => {
+                                                console.log(ansUser[window.test], Object.keys(ansUser[window.test]).length); 
+                                                let taskBall=0; let balls = 0
+                                                document.body.innerHTML=''
+                                                for(let x of Object.keys(ansUser[window.test])){ 
+                                                    //document.body.innerHTML+=`<ul style="margin: 2px;"><li style="list-style: circle;">${ansUser['test1'][x]}</li></ul>`;
+                                                    if (ansUser[window.test][x][1]){taskBall+=1; balls+=ansUser[window.test][x][2]};}
+
+                                                
+                                                document.body.innerHTML+=`<p style="margin: 20px;">Вы выполнили правильно ${taskBall} заданий. И набрали ${balls} баллов. Хеш: 75.${taskBall*3}.${balls*2}.23.${Math.round(Math.random()*100000)}</p>`;
+                                                document.body.innerHTML+=`<iframe src="valle.html" class="walle"></iframe>`
+                                                })
+                                                
+            const time= setInterval(timeCount, 1000)
+    </script>
+    <script type="module">
+        //console.log(window.test)
+        //console.log(window.answers[window.test][window.variant]['count'])
+        for (let i =1; i<window.answers[window.test][window.variant]["count"]+1; i++){
+            document.getElementById(`${i}`).addEventListener('click', (e)=>{
+                document.getElementById('answer').src=`tests/${window.test}/${window.variant}/test${i}.html`
+                document.getElementById('compliteTask').className= `${i}`
+                try {
+                document.getElementById('yourAnswer').innerText = `Ваш ответ: ${window.ansUserDub[window.test][document.getElementById('compliteTask').className][0]}`
+                }
+                catch (error){
+                    document.getElementById('yourAnswer').innerText = `Ваш ответ: -`
+                }
+                
+                
+            })
+        }
+        function complite(){
+            alert(ansUser)
+        }
+
+        
+    
+
+
+    </script>
+        
+
+</html>
